@@ -175,5 +175,220 @@
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <!-- BASIC CAROUSEL -->
+    <section id="basic" class="demo-section container">
+  <h5 class="section-title center">Hair Inspiration</h5>
+
+  <div class="controls center">
+    <button id="basicPrev" class="btn pink darken-2">Prev</button>
+    <button id="basicNext" class="btn pink darken-2">Next</button>
+    <button id="basicGo3" class="btn pink darken-2">View Style</button>
+  </div>
+
+  <div class="carousel" id="basicCarousel">
+    <a class="carousel-item" href="hairphoto1.jpg">
+      <img src="images/hairphoto1.jpg" alt="Healthy Hair">
+    </a>
+    <a class="carousel-item" href="hairphoto2.jpg">
+      <img src="images/hairphoto2.jpg" alt="Hair Routine">
+    </a>
+    <a class="carousel-item" href="hairproducts1.jpg">
+      <img src="images/hairproducts1.jpg" alt="Shiny Hair">
+    </a>
+  </div>
+
+  <p class="grey-text center">
+    Swipe or use buttons to explore hair inspiration.
+  </p>
+</section>
+
+
+    <!-- COLLAPSIBLE -->
+    <section id="collapsible" class="demo-section">
+      <h5>2) Collapsible</h5>
+      <p class="grey-text text-darken-1">
+        Below is a standard collapsible list. You can also enable "accordion" behavior or allow multiple sections open.
+      </p>
+
+
+      <!-- Collapsible markup -->
+      <section id="collapsible" class="demo-section container">
+  <h5 class="section-title center">Hair Care FAQs</h5>
+
+  <ul class="collapsible" id="demoCollapsible">
+
+    <li class="active">
+      <div class="collapsible-header">
+        <i class="material-icons">spa</i>
+        How often should I wash my hair?
+      </div>
+      <div class="collapsible-body">
+        <p>Most people benefit from washing their hair 2–3 times per week depending on hair type.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">
+        <i class="material-icons">whatshot</i>
+        How can I prevent heat damage?
+      </div>
+      <div class="collapsible-body">
+        <p>Always use heat protectant and avoid daily use of hot tools.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">
+        <i class="material-icons">favorite</i>
+        What helps hair grow stronger?
+      </div>
+      <div class="collapsible-body">
+        <p>A healthy scalp, proper nutrition, and consistent routines improve hair strength.</p>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+
+    <!-- FULL-WIDTH CAROUSEL SLIDER -->
+    <section id="fullwidth" class="demo-section">
+  <h5 class="section-title center">Healthy Hair Tips</h5>
+
+  <div class="controls center">
+    <button id="fwPrev" class="btn pink darken-2">Prev</button>
+    <button id="fwNext" class="btn pink darken-2">Next</button>
+    <button id="fwToggle" class="btn pink darken-2">Auto Play</button>
+  </div>
+
+  <div class="carousel carousel-slider center" id="fullWidthCarousel">
+
+    <a class="carousel-item pink lighten-3 white-text">
+      <h4>Hydration Matters</h4>
+      <p>Deep condition weekly for soft, healthy hair.</p>
+    </a>
+
+    <a class="carousel-item pink lighten-2 white-text">
+      <h4>Protect Your Hair</h4>
+      <p>Limit heat styling and use protectant products.</p>
+    </a>
+
+    <a class="carousel-item pink lighten-1 white-text">
+      <h4>Stay Consistent</h4>
+      <p>Simple routines lead to long-term results.</p>
+    </a>
+
+  </div>
+</section>
+
+
+  <!-- Materialize JS (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // =========================
+      // 1) Basic carousel init
+      // =========================
+      const basicElem = document.querySelector('#basicCarousel');
+      const basicInstance = M.Carousel.init(basicElem, {
+        duration: 200,
+        dist: -100,
+        shift: 0,
+        padding: 0,
+        numVisible: 5,
+        indicators: false
+      });
+
+
+      document.querySelector('#basicPrev').addEventListener('click', () => basicInstance.prev());
+      document.querySelector('#basicNext').addEventListener('click', () => basicInstance.next());
+      document.querySelector('#basicGo3').addEventListener('click', () => basicInstance.set(2)); // 0-based index
+
+
+      // =========================
+      // 2) Collapsible init
+      // =========================
+      const collElem = document.querySelector('#demoCollapsible');
+
+
+      // Option A: Accordion behavior (only one open at a time) -> accordion: true
+      // Option B: Multiple open at once -> accordion: false
+      const collInstance = M.Collapsible.init(collElem, {
+        accordion: false
+      });
+
+
+      // =========================
+      // 3) Full-width carousel-slider init
+      // =========================
+      const fwElem = document.querySelector('#fullWidthCarousel');
+      const fwInstance = M.Carousel.init(fwElem, {
+        fullWidth: true,
+        indicators: true
+      });
+
+
+      document.querySelector('#fwPrev').addEventListener('click', () => fwInstance.prev());
+      document.querySelector('#fwNext').addEventListener('click', () => fwInstance.next());
+
+
+      // Optional autoplay for full-width
+      let autoplayOn = false;
+      let autoplayTimer = null;
+
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(() => fwInstance.next(), 3000);
+        autoplayOn = true;
+      }
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+        autoplayOn = false;
+      }
+
+
+      document.querySelector('#fwToggle').addEventListener('click', () => {
+        if (autoplayOn) stopAutoplay();
+        else startAutoplay();
+      });
+    });
+  </script>
+   <script>
+       // Initialize modal
+       document.addEventListener('DOMContentLoaded', function() {
+           var elems = document.querySelectorAll('.modal');
+           var instances = M.Modal.init(elems);
+       });
+
+
+       // Function to display selected pastry
+       function displayPastry() {
+           const selectedPastry = document.querySelector('input[name="pastry"]:checked').value;
+           document.getElementById('pastry-response').innerText = `You selected: ${selectedPastry}`;
+       }
+       // Function to handle email subscription form submission
+       function submitEmail(event) {
+           event.preventDefault();
+           const email = document.getElementById('email').value;
+           document.getElementById('email-response').innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+           document.getElementById('email').value = ''; // Clear the input
+
+
+           // Display modal
+           const modalText = document.getElementById('modal-content-text');
+           modalText.innerText = `Thank you for subscribing! Updates will be sent to: ${email}`;
+           const modal = M.Modal.getInstance(document.getElementById('modal1'));
+           modal.open();
+       }
+   </script>
+
+
 </body>
 </html>
