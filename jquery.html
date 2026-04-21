@@ -1,63 +1,131 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<div class="container">
-  <h1>jQuery Practice Lab</h1>
-  <!-- Exercise 1 & 2 -->
-  <section>
-    <h2>Exercise 1 & 2: DOM Selection</h2>
-    <p>This is paragraph one.</p>
-    <p>This is paragraph two.</p>
-  </section>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hair Care jQuery Page</title>
 
-  <!-- Exercise 3 & 4 -->
-  <section>
-    <h2>Exercise 3 & 4: Show / Hide</h2>
-    <button id="hideBtn">Hide / Toggle Box</button>
-    <div id="box">Hello World</div>
-  </section>
+<link rel="stylesheet" href="styles.css">
 
-  <!-- Exercise 5 -->
-  <section>
-    <h2>Exercise 5: Slide Animation</h2>
-    <button id="slideBtn">Slide Box</button>
-  </section>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- Exercise 6 -->
-  <section>
-    <h2>Exercise 6: Fade Effect</h2>
-    <button id="fadeBtn">Fade Box</button>
-  </section>
+<style>
+  .section {
+    margin: 40px 0;
+    text-align: center;
+  }
 
-  <!-- Exercise 7 -->
-  <section>
-    <h2>Exercise 7: Change Text</h2>
-    <button id="textBtn">Change Text</button>
-  </section>
+  .btn {
+    background-color: #ad1457;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }
 
-  <!-- Exercise 8 -->
-  <section>
-    <h2>Exercise 8: Append List Items</h2>
-    <ul id="list"></ul>
-    <button id="addItem">Add Item</button>
-  </section>
-
-  <!-- Exercise 9 -->
-  <section>
-    <h2>Exercise 9: Form Interaction</h2>
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <button id="submitBtn">Submit</button>
-    <p id="output"></p>
-  </section>
-
-  <!-- Exercise 10 -->
-  <section>
-    <h2>Exercise 10: Dark Mode</h2>
-    <button id="darkModeBtn">Toggle Dark Mode</button>
-  </section>
-</div>
-
-
-
+  img {
+    width: 250px;
+    border-radius: 10px;
+    margin: 10px;
+  }
+</style>
 </head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1>Hair Care Interactions</h1>
+    <p>Explore simple jQuery features for your hair care journey.</p>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="hairroutine.html">Hair Routine</a></li>
+      <li><a href="hairproducts.html">Hair Products</a></li>
+      <li><a href="materialize.html">Materialize</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="jquery.html">jQuery</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- FADE IMAGE -->
+  <div class="section">
+    <h2>Fade Effect</h2>
+    <img id="fadeImg" src="images/hairphoto1.jpg">
+    <br>
+    <button class="btn" id="fadeBtn">Fade Image</button>
+  </div>
+
+  <!-- SLIDE TOGGLE -->
+  <div class="section">
+    <h2>Show/Hide Tips</h2>
+    <button class="btn" id="toggleBtn">Show Tips</button>
+
+    <div id="tipsBox" style="display:none;">
+      <p>Avoid overwashing your hair.</p>
+      <p>Use heat tools sparingly.</p>
+      <p>Condition regularly.</p>
+    </div>
+  </div>
+
+  <!-- IMAGE HOVER -->
+  <div class="section">
+    <h2>Hover Effect</h2>
+    <img class="hoverImg" src="images/hairphoto2.jpg">
+  </div>
+
+  <!-- CLICK MESSAGE -->
+  <div class="section">
+    <h2>Click for a Tip</h2>
+    <button class="btn" id="tipBtn">Get Tip</button>
+    <p id="tipText"></p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Hair Care Tips</p>
+  </div>
+</footer>
+
+<!-- jQuery SCRIPT -->
+<script>
+$(document).ready(function(){
+
+  // Fade image
+  $("#fadeBtn").click(function(){
+    $("#fadeImg").fadeToggle();
+  });
+
+  // Slide toggle tips
+  $("#toggleBtn").click(function(){
+    $("#tipsBox").slideToggle();
+  });
+
+  // Hover effect
+  $(".hoverImg").hover(function(){
+    $(this).css("opacity", "0.5");
+  }, function(){
+    $(this).css("opacity", "1");
+  });
+
+  // Click tip
+  $("#tipBtn").click(function(){
+    $("#tipText").text("Always use a heat protectant before styling!");
+  });
+
+});
+</script>
+
+</body>
 </html>
